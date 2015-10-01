@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate'
 gem 'kaminari'
 gem 'rmagick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'

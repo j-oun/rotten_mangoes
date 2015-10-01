@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :destroy]
 
+  resource :session  
+
   get '/login', controller: :sessions, action: :new
   post '/login', controller: :sessions, action: :create
   get '/logout', controller: :sessions, action: :destroy

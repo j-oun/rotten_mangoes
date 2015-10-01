@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'users/index'
+  end
+
   get 'reviews/new'
 
   get 'reviews/create'
@@ -9,8 +13,21 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :destroy]
-  resources :sessions, only: [:new, :create, :destroy] 
+
+  get '/login', controller: :sessions, action: :new
+  post '/login', controller: :sessions, action: :create
+  get '/logout', controller: :sessions, action: :destroy
+
+  # resources :sessions, only: [:create] do
+  #   collection do
+  #     delete '/', action: 'destroy', as: 'logout'
+  #   end
+  # end
   root to: 'movies#index'
+
+  namespace :admin do
+    resources :users
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

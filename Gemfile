@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'kaminari'
 gem 'rmagick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

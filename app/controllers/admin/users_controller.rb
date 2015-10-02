@@ -18,7 +18,6 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path, notice: "User created"
     else
       flash[:alert] = "Failed to create user"
-      render :edit
     end
   end
 
@@ -27,13 +26,11 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path
     else
       flash[:alert] = "Failed to update user"
-      render :edit
     end
   end
 
   def new
     @user = User.new
-    render :edit
   end
 
   def destroy

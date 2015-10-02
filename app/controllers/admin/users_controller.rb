@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
     @users = User.page(params[:page]).per(10)
     
     @user_session = User.find(session[:user_id])
-     if @user_session.admin==0 
+     if @user_session.admin == 0  
         redirect '/movies'
      end 
   end

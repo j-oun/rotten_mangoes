@@ -1,0 +1,34 @@
+<h1>Editing user <%= @user.firstname %></h1>
+  
+  <% if @user.errors.any? %>
+    <div>
+      <ul class="errors">
+        <% @user.errors.each do |field, error| %>
+          <li>Field '<%= field %>' <%= error %>.</li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form_for([:admin, @user]) do |f| %>
+      <div>
+        <%= f.label :firstname, 'First Name' %><br>
+        <%= f.text_field :firstname %>
+      </div>
+      <div>
+        <%= f.label :lastname, 'Last Name' %><br>
+        <%= f.text_field :lastname %>
+      </div>
+      <div>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.submit %>
+      </div>
+
+<% end %>

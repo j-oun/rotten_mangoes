@@ -1,26 +1,28 @@
 <h1>List of Users</h1>
 
-  <%= paginate @users %>
+    <%= link_to "new", new_admin_user_path %>
 
-  <table>
+    <%= paginate @users %>
+
+<table>
     <thead>
-    <tr>
-    <th>ID</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    </tr>
-    <tbody>
-     <% @users.each do |user| %>
-    <tr>
-    <td><%= user.id %></td>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.email %></td>
-    <% end %>
-    </tr>
-    </tbody>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                <td><%= user.id %></td>
+                <td><%= user.firstname %></td>
+                <td><%= user.lastname %></td>
+                <td><%= user.email %>(<%= link_to "edit", edit_admin_user_path(user) %>, <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "You sure?" }%>)</td>
+                </tr>
+            <% end %>
+        </tbody>
     </thead>
-  </table>
+</table>
 
 

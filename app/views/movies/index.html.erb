@@ -2,10 +2,12 @@
  
   <%= form_tag(root_path, method: "get") do %>
     <%= label_tag(:search, "Search for:") %>
-    <%= text_field_tag(:title, "Title") %>
-    <%= text_field_tag(:director, "Director") %>
-    <%= select_tag(:duration, options_for_select([['Under 90 minutes', 1], ['Between 90 and 120 minutes', 2], ['Over 120 minutes', 3]])) %>
-    <%= submit_tag("Search") %>
+    <%= text_field_tag(:title, nil, placeholder: "title") %>
+    <%= text_field_tag(:director, nil, placeholder: "director") %>
+    <%= select_tag(:duration, options_for_select([
+      ['Under 90 minutes', 1], ['Between 90 and 120 minutes', 2], ['Over 120 minutes', 3]
+      ], session[:duration])) %>
+    <%= submit_tag "Search" %>
   <% end %>
 
    <hr>

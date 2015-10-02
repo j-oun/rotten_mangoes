@@ -4,9 +4,22 @@ class MoviesController < ApplicationController
    # @movies = Movie.all
    title = params[:title]
    director = params[:director]
-   duration = params[:duration]
-   @movies = Movie.where("title LIKE ? OR director LIKE ?", "%#{title}%", "%#{director}")
-   @duration = Movie.where()
+   duration = get_duration(params[:duration])
+   session[:duration] = params[:duration]
+   @movies = Movie.where("title LIKE ? OR director LIKE ?", "%#{title}%", "%#{director}%").where(runtime_in_minutes: duration)
+  end
+
+  def get_duration(duration)
+    case duration
+    when '1'
+      return (0..89)
+    when '2'
+      return (90..120)
+    when '3'
+      return (121..300)
+    else
+      return (0..300)
+    end
   end
 
   def show

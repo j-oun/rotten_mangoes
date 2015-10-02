@@ -15,6 +15,15 @@
         end
       end
 
+      def edit
+      end
+
+      def destroy
+        user = User.find(params[:id])
+        UserMailer.deleted_account(user)
+        user.destroy
+        redirect_to movies_path
+      end
  
       protected
 

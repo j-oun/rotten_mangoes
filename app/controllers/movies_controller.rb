@@ -1,12 +1,13 @@
 class MoviesController < ApplicationController
 
   def index
-   title = params[:title]
-   director = params[:director]
+   # title = params[:title]
+   # director = params[:director]
+   search = params[:search]
    duration = params[:duration]
    session[:duration] = params[:duration]
    # @movies = Movie.where("title LIKE ? OR director LIKE ?", "%#{title}%", "%#{director}%").where(runtime_in_minutes: duration)
-    @movies = Movie.search(title, director, duration)  
+   @movies = Movie.search(search, duration)  
   end
 
   
